@@ -23,8 +23,10 @@ async function Itemize(item, config, options, usage) {
     if ( resourceUpdates.length ) await actor.updateEmbeddedDocuments("Item", resourceUpdates);
 
     const copyName = `${item.name} ${item.labels.level}`;
-    if (false) { // make it check if there's already an item with this name, and if so, increase the amount instead of adding a new one
-
+    const existingCopies = actor.items.filter(item => (item.getFlag(MODULE_ID, "isSpell") && item.name == copyName));
+    if (existingCopies.length > 0) {
+        // Only add to the first existing copy found
+        await existingCopies[0].update({ ["system.quantity"]: existingCopies[0].system.quantity + 1 });
     }
     else {
         let damage = item.system.damage.parts[0];
