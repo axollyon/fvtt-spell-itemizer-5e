@@ -1,4 +1,5 @@
 {
-    "spell-itemizer": {
+    "spell-itemizer-5e": {
+        "copyMessage": "{copyName} has been copied to your Inventory."
     }
 }
