@@ -1,5 +1,6 @@
 {
     "spell-itemizer-5e": {
-        "copyMessage": "{copyName} has been copied to your Inventory."
+        "copyMessage": "{copyName} has been copied to your Inventory.",
+        "clearMessage": "All spell items have been cleared."
     }
 }

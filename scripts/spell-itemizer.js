@@ -42,12 +42,11 @@ async function Itemize(item, config, options, usage) {
                 }
             }
         }
-        const flag = `flags.${MODULE_ID}.isSpell`;
         let copy = await item.clone({ 
             "type": "consumable",
             "name": copyName,
             "system.consumableType": "potion",
-            flag: true,
+            "flags.spell-itemizer-5e.isSpell": true, // todo: figure out how to make it use MODULE_ID
             "system.uses": {
                 "value": 1,
                 "max": 1,
@@ -65,4 +64,18 @@ async function Itemize(item, config, options, usage) {
 
 
     ui.notifications.info(game.i18n.localize(`${MODULE_ID}.copyMessage`).replace("{copyName}", `${copyName}`))
+}
+
+Hooks.on("dnd5e.restCompleted", (actor, result) => {
+    if (result.longRest && actor.getFlag(MODULE_ID, "itemize")) {
+        ClearItemized(actor);
+    }
+});
+
+async function ClearItemized(actor) {
+    const spellItems = actor.items.filter(item => item.getFlag(MODULE_ID, "isSpell")).map(item => item.id);
+    if (spellItems.length > 0) {
+        await actor.deleteEmbeddedDocuments("Item", spellItems);
+        ui.notifications.info(game.i18n.localize(`${MODULE_ID}.clearMessage`));
+    }
 }
