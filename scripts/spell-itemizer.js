@@ -4,7 +4,7 @@ Hooks.on("dnd5e.itemUsageConsumption", (item, config, options, usage) => {
     const itemize = item.parent.getFlag(MODULE_ID, "itemize");
     if (!itemize) return true;
     else {
-        Itemize(item, config, options, usage).then();
+        Itemize(item, config, options, usage);
         return false;
     }
 });
@@ -17,5 +17,5 @@ async function Itemize(item, config, options, usage) {
     if ( !foundry.utils.isEmpty(actorUpdates) ) await item.parent.update(actorUpdates);
     if ( resourceUpdates.length ) await item.parent.updateEmbeddedDocuments("Item", resourceUpdates);
 
-    
+
 }
