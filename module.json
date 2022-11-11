@@ -1,0 +1,37 @@
+{
+    "id": "spell-itemizer-5e",
+    "title": "Spell Itemizer 5e",
+    "description": "Turns spells into inventory items when used",
+    "authors": [{"name": "axollyon"}],
+    "esmodules": [
+        "scripts/spell-itemizer.js"
+    ],
+    "version": "0.0.1",
+    "compatibility": {
+        "minimum": "10",
+        "verified": "10.288"
+    },
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        }
+    ],
+    "relationships": {
+        "systems": [
+            {
+                "id": "dnd5e",
+                "type": "system",
+                "compatibility": {
+                    "minimum": "2.0.3",
+                    "verified": "2.0.3"
+                }
+            }
+        ]
+    },
+    "url": "https://github.com/axollyon/fvtt-spell-itemizer-5e",
+    "manifest": "https://raw.githubusercontent.com/axollyon/fvtt-spell-itemizer-5e/main/module.json",
+    "download": "https://github.com/axollyon/fvtt-spell-itemizer-5e/archive/main.zip"
+}
+  

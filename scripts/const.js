@@ -1,0 +1,1 @@
+export const MODULE_ID = "spell-itemizer-5e";
